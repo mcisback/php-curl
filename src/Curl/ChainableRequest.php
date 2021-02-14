@@ -60,6 +60,14 @@ class ChainableRequest {
         return $this;
     }
 
+    public function qs( array|string $key, $value=null ) {
+        if( is_array( $key ) ) {
+            return $this->qsFromArray( $key );
+        } elseif( is_string( $key ) && $value !== null ) {
+            return $this->qsParam( $key, $value );
+        }
+    }
+
     public function headers( array $headersArray ) {
         return $this->_headers = $headersArray;
     }
