@@ -99,6 +99,12 @@ $curl = new Curl();
 
 $res4 = $curl
 	->get('https://localhost/woo1/index.php/wp-json/wc/v3/products')
+	->verifySslPeer( false )
+	->verifySslHost( false )
+	->authBasic( 
+		'ck_6ac8c948ae2357abe9c2412e87c1706973fe2b00',
+		'cs_54eb318cb2fd7d31b48f8db4c90ce05e02e6457d'
+	)
 	->rt()
 	->follow()
 	->qsFromArray([
@@ -115,6 +121,12 @@ $curl = new Curl();
 
 $res5 = $curl
 	->get('https://localhost/woo1/index.php/wp-json/wc/v3/products')
+	->verifySslPeer( false )
+	->verifySslHost( false )
+	->authBasic( 
+		'ck_6ac8c948ae2357abe9c2412e87c1706973fe2b00',
+		'cs_54eb318cb2fd7d31b48f8db4c90ce05e02e6457d'
+	)
 	->rt()
 	->follow()
 	->qsParam( 'page', 2 )

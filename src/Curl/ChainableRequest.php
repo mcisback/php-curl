@@ -61,7 +61,7 @@ class ChainableRequest {
     }
 
     public function headers( array $headersArray ) {
-        return $this->setopt( CURLOPT_HTTPHEADER, $headersArray );
+        return $this->_headers = $headersArray;
     }
 
     public function header( string $id, string $content ) {
@@ -82,7 +82,7 @@ class ChainableRequest {
         return $this->contentType( 'text/html' );
     }
 
-    public function authBearer( $token ) {
+    public function authBearer( string $token ) {
         return $this->header( 'Authorization', "Bearer $token" );
     }
 
@@ -90,8 +90,8 @@ class ChainableRequest {
         return $this->authBearer( base64_encode( $token ) );
     }
 
-    public function authBasic( $user, $pass ) {
-        return $this->header('Authorization', 'Basic ' + base64_encode("$user:$pass"));
+    public function authBasic( string $user, string $pass ) {
+        return $this->header('Authorization', 'Basic ' . \base64_encode("$user:$pass"));
     }
 
     public function method( string $reqType ) {
@@ -138,9 +138,17 @@ class ChainableRequest {
         return $this->setopt( CURLOPT_FOLLOWLOCATION, $value ? 1 : 0 );
     }
 
+    public function verifySslPeer( bool $value = true ) {
+        return $this->setopt( CURLOPT_SSL_VERIFYPEER, $value );
+    }
+
+    public function verifySslHost( bool $value = true ) {
+        return $this->setopt( CURLOPT_SSL_VERIFYHOST, $value );
+    }
+
     public function exec() {
         if( !empty( $this->_headers ) ) {
-            $this->headers( $this->_headers );
+            $this->setopt( CURLOPT_HTTPHEADER, $this->_headers );
         }
 
         if( !empty( $this->queryParams ) ) {
