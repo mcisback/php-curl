@@ -109,7 +109,7 @@ Examples:
 		)
 		->rt()
 		->follow()
-		->qsFromArray([
+		->qs([
 			'sku' => '883985597549'
 		])
 		->exec()
@@ -131,9 +131,9 @@ Examples:
 		)
 		->rt()
 		->follow()
-		->qsParam( 'page', 2 )
-	->qsParam( 'per_page', 5 )
-	->exec()
-;
-
-print_r( $res5 );
+		->qs( 'page', 2 )
+		->qs( 'per_page', 5 )
+		->exec()
+	;
+	
+	print_r( $res5 );

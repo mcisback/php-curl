@@ -60,7 +60,7 @@ class ChainableRequest {
         return $this;
     }
 
-    public function qs( array|string $key, $value=null ) {
+    public function qs( $key, $value=null ) {
         if( is_array( $key ) ) {
             return $this->qsFromArray( $key );
         } elseif( is_string( $key ) && $value !== null ) {
