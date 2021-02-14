@@ -107,7 +107,7 @@ $res4 = $curl
 	)
 	->rt()
 	->follow()
-	->qsFromArray([
+	->qs([
 		'sku' => '883985597549'
 	])
 	->exec()
@@ -129,8 +129,8 @@ $res5 = $curl
 	)
 	->rt()
 	->follow()
-	->qsParam( 'page', 2 )
-	->qsParam( 'per_page', 5 )
+	->qs( 'page', 2 )
+	->qs( 'per_page', 5 )
 	->exec()
 ;
 
