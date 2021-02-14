@@ -1,0 +1,16 @@
+{
+    "name": "markcaggiano/php-curl",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Marco Caggiano",
+            "email": "mcisback@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Mc\\": "src/"
+        }
+    }
+}
